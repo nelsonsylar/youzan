@@ -1,9 +1,11 @@
 import './index.css'
-import '@/modules/css/common.css'
+import 'css/common.css'
 import Vue from 'vue'
 import axios from 'axios'
-import url from '@/modules/js/api.js'
+import url from 'js/api.js'
 import { InfiniteScroll } from 'mint-ui';
+import foot from 'components/foot.vue'
+import swiper from 'components/Swiper.vue'
 
 Vue.use(InfiniteScroll);
 
@@ -24,6 +26,11 @@ new Vue({
         pageSize:6,
         loading:false,
         allLoaded:false,
+        banners:null,
+    },
+    components:{
+        foot,
+        swiper,
     },
     methods:{
         getHotLists(){
@@ -50,9 +57,15 @@ new Vue({
                 console.log(err)
             })
             this.loading=false
-        }  
+        },
+        getBaners(){
+            axios.get(url.banner).then((res)=>{
+                this.banners=res.data.lists
+            }).catch((err)=>{console.log(err)})
+        }
     },
     created(){
         this.getHotLists()
+        this.getBaners()
     }
 })
