@@ -4,8 +4,8 @@ import Vue from 'vue'
 import axios from 'axios'
 import url from 'js/api.js'
 import { InfiniteScroll } from 'mint-ui';
-import foot from 'components/foot.vue'
-
+// import foot from 'components/foot.vue'
+import mixin from 'js/mixin.js'
 
 new Vue({
     el:'#app',
@@ -17,9 +17,7 @@ new Vue({
             subLists:null,
         }
     },
-    components:{
-        foot
-    },
+    mixins:[mixin],
     created(){
         this.getTopList()
         this.getRank()
@@ -47,7 +45,6 @@ new Vue({
         getSubList(){
             axios.get(url.subList).then(res=>{
                 this.subLists=res.data.data
-                console.log(res)
             }).catch(err=>{
                 console.log(err)
             })

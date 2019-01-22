@@ -2,7 +2,7 @@
   <div id=foot >
     <div class="bottom-nav" >
       <ul>
-        <li v-for="(tab,index) in tabs" :class='{active:index===thisTab}'><a :href="tab.site"><i :class="tab.class"></i><div>{{tab.name}}</div></a></li>
+        <li  v-for="(tab,index) in tabs" :class='{active:index===thistab}'><a :href="tab.site"><i :class="tab.class"></i><div>{{tab.name}}</div></a></li>
         
       </ul>
     </div>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  props:['thisTab'],
+  props:['thistab'],
   data(){
     return {
       nowTab:null,
@@ -19,13 +19,13 @@ export default {
       tabs:[
               {name:'有赞',site:'./index.html',class:'icon-home'},
               {name:'分类',site:'./category.html',class:'icon-category'},
-              {name:'购物车',site:'#',class:'icon-cart'},
-              {name:'我',site:'#',class:'icon-user'}
+              {name:'购物车',site:'./cart.html',class:'icon-cart'},
+              {name:'我',site:'./member.html',class:'icon-user'}
       ]
     }
   },
   methods:{
-   
+    
   },
   created(){}
   

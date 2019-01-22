@@ -4,20 +4,13 @@ import Vue from 'vue'
 import axios from 'axios'
 import url from 'js/api.js'
 import { InfiniteScroll } from 'mint-ui';
-import foot from 'components/foot.vue'
+// import foot from 'components/Foot.vue'
 import swiper from 'components/Swiper.vue'
-
+import mixin from 'js/mixin.js'
 Vue.use(InfiniteScroll);
 
 Vue.$http=axios
-Vue.filter('priceFilter',(value)=>{
-    let afterDotNum =value.toString().split('.')[1].length
-    if(afterDotNum!==2){
-        return value.toFixed(2)
-    }else{
-        return value
-    }
-})
+
 new Vue({
     el:'#app',
     data:{
@@ -29,9 +22,11 @@ new Vue({
         banners:null,
     },
     components:{
-        foot,
         swiper,
     },
+    mixins:[
+        mixin
+    ],
     methods:{
         getHotLists(){
             if(this.allLoaded){
