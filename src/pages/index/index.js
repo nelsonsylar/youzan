@@ -38,7 +38,7 @@ new Vue({
                 pageSize:this.pageSize
             }).then((res)=>{    
                 if(res.data.lists.length<6){
-                    this.allLoading=true
+                    this.allLoaded=true
                 }
                 if(this.lists==null){
                     //第一次获取lists

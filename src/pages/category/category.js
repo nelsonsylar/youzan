@@ -6,6 +6,7 @@ import url from 'js/api.js'
 import { InfiniteScroll } from 'mint-ui';
 // import foot from 'components/foot.vue'
 import mixin from 'js/mixin.js'
+import { watch } from 'fs';
 
 new Vue({
     el:'#app',
@@ -18,6 +19,7 @@ new Vue({
         }
     },
     mixins:[mixin],
+   
     created(){
         this.getTopList()
         this.getRank()
@@ -49,6 +51,7 @@ new Vue({
                 console.log(err)
             })
         },
-    }
+       
+    },
     
 })

@@ -78,7 +78,7 @@
                       </div>
                       <div class="detail">
                         <div class="title">{{hotgood.name}}</div>
-                        <div class="price">￥{{hotgood.price}}</div>
+                        <div class="price">￥{{hotgood.price|priceFilter}}</div>
                         <div class="recommend">
                           <span>推荐值:</span>
                           <span>{{hotgood.recommend}}</span>
@@ -123,7 +123,11 @@
           <div id="scroll-main-content" v-if='nowtab>0' class="js-main-content inner-content" style="height: 534px; transform: translate3d(0px, 0px, 0px);">
             <h3 class="category-title">热门品牌 </h3>
             <ul class="category-content" >
-              <li class="category-item js-category-item" v-for='(sublist,index) in subLists.brandList' :id="sublist.id" :data-item-name="sublist.name">
+              <li class="category-item js-category-item" 
+              v-for='(sublist,index) in subLists.brandList' 
+              :id="sublist.id" 
+              :data-item-name="sublist.name"
+              @click='getInfo(sublist)'>
                 <img :src="sublist.img" :alt="sublist.name" class="category-img">
                 <span class="category-item-name">
                 {{sublist.name}}            </span>
@@ -131,7 +135,10 @@
             </ul>
             <h3 class="category-title"> 热门分类  </h3>
             <ul class="category-content">
-              <li class="category-item js-category-item" v-for='(sublist,index) in subLists.categoryList' :data-item-id="10" data-item-name="sublist.name">
+              <li class="category-item js-category-item" 
+              v-for='(sublist,index) in subLists.categoryList' 
+              :data-item-id="10" data-item-name="sublist.name"
+              @click='getInfo(sublist)'>
                 <img :src="sublist.img" :alt="sublist.name" class="category-img">
                 <span class="category-item-name">
                 {{sublist.name}}            </span>
